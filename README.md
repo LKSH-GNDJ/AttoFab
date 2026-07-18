@@ -31,9 +31,9 @@ for the full rationale.
 
 | Phase | Status | What it does |
 |---|---|---|
-| **Phase 1 — 1D engine** | ✅ Done | Single vertical column: Deal-Grove oxidation, Gaussian implant, Fick's-Law diffusion (explicit FDM), junction-depth finding |
-| **Phase 2 — 2D engine** | ✅ Done | Full 2D wafer cross-section: masked (LOCOS-style) oxidation/implant, 2D diffusion, mask expose/develop, cellular-automaton anisotropic & isotropic etch + deposition, canvas renderer |
-| **Phase 3 — GDSII + 3D** | 🔜 Planned | GDSII/OASIS mask parsing, RLE + chunked-sparse 3D mesh, WebGL topography viewer |
+| **Phase 1 — 1D engine** |  Done | Single vertical column: Deal-Grove oxidation, Gaussian implant, Fick's-Law diffusion (explicit FDM), junction-depth finding |
+| **Phase 2 — 2D engine** |  Done | Full 2D wafer cross-section: masked (LOCOS-style) oxidation/implant, 2D diffusion, mask expose/develop, cellular-automaton anisotropic & isotropic etch + deposition, canvas renderer |
+| **Phase 3 — GDSII + 3D** |  Planned | GDSII/OASIS mask parsing, RLE + chunked-sparse 3D mesh, WebGL topography viewer |
 
 Also implemented: crystal-orientation-dependent oxidation ((111) vs (100)),
 a full-stack backend + two frontends + CLI, and a physics regression bench
@@ -175,6 +175,6 @@ especially welcome.
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE). AttoFab is a community-driven educational
+MIT — see [`LICENSE`](LICENSE). LKSH-GNDJ, AttoFab is a community-driven educational
 project and is not affiliated with or representing any semiconductor
 foundry.
