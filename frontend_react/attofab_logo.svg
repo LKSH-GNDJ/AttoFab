@@ -1,0 +1,15 @@
+<svg width="360" height="80" viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AttoFab logo">
+  <!-- Mark: stylized wafer cross-section, layered substrate + oxide + implant well -->
+  <g transform="translate(8,8)">
+    <rect x="0" y="40" width="64" height="24" rx="2" fill="#4a4e57"/>
+    <rect x="0" y="32" width="64" height="10" fill="#7fc8f8"/>
+    <path d="M 20 32 Q 32 14 44 32 Z" fill="#7fc8f8"/>
+    <rect x="26" y="40" width="12" height="20" fill="#e8b84b" opacity="0.85"/>
+    <circle cx="32" cy="50" r="3.2" fill="#0e1116"/>
+    <rect x="0" y="0" width="64" height="64" fill="none"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="84" y="36" font-family="Georgia, 'Liberation Serif', serif" font-size="30" font-weight="600" fill="#1c2128">Atto</text>
+  <text x="84" y="36" font-family="Georgia, 'Liberation Serif', serif" font-size="30" font-weight="600" fill="#5aa9e6" dx="60">Fab</text>
+  <text x="84" y="56" font-family="-apple-system, sans-serif" font-size="11" letter-spacing="0.06em" fill="#8b95a1">OPEN-SOURCE FABRICATION SIMULATOR</text>
+</svg>

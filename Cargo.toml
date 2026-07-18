@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/core",
+]
+
+# core-wasm and core-py are stubbed directories (crates/core-wasm,
+# crates/core-py) not yet scaffolded with their own Cargo.toml - add them
+# back to `members` once they exist, since Cargo refuses to resolve a
+# workspace with a listed member that has no manifest. Until then:
+#
+#   cargo test -p attofab-core   (or just `cargo test`, same result today)

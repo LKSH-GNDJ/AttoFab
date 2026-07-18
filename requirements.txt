@@ -1,0 +1,12 @@
+# Backend (FastAPI)
+fastapi>=0.110
+uvicorn[standard]>=0.29
+sqlalchemy>=2.0
+aiosqlite>=0.20
+pydantic>=2.6
+python-multipart>=0.0.9
+
+# Streamlit frontend (alternative UI)
+streamlit>=1.32
+requests>=2.31
+matplotlib>=3.8

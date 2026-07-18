@@ -1,0 +1,18 @@
+[package]
+name = "attofab-core"
+version = "0.1.0"
+edition = "2021"
+description = "AttoFab physics core: Deal-Grove oxidation, Gaussian implant, Fick's-Law FDM diffusion. Pure Rust, no FFI bindings - those live in core-wasm / core-py."
+license = "MIT"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# rayon is intentionally NOT a default dependency: wasm32-unknown-unknown
+# can't use it without extra SharedArrayBuffer/COOP-COEP setup, and our 1D/2D
+# grids don't need it yet. Native builds (Python bindings, future desktop
+# batch jobs) can opt in later via a `native-parallel` feature.
+
+[dev-dependencies]
+approx = "0.5"

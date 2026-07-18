@@ -1,0 +1,12 @@
+export default function Logo({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" role="img" aria-label="AttoFab mark">
+      <rect width="64" height="64" rx="12" fill="#0e1116" />
+      <rect x="6" y="40" width="52" height="18" rx="2" fill="#4a4e57" />
+      <rect x="6" y="33" width="52" height="8" fill="#7fc8f8" />
+      <path d="M 18 33 Q 32 12 46 33 Z" fill="#7fc8f8" />
+      <rect x="24" y="40" width="16" height="18" fill="#e8b84b" opacity="0.9" />
+      <circle cx="32" cy="49" r="3.6" fill="#0e1116" />
+    </svg>
+  );
+}
