@@ -184,6 +184,6 @@ especially welcome.
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE). AttoFab is a community-driven educational
+MIT — LKSH-GNDJ, see [`LICENSE`](LICENSE). AttoFab is a community-driven educational
 project and is not affiliated with or representing any semiconductor
 foundry.
