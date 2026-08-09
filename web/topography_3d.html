@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AttoFab - 3D Topography Viewer</title>
+<style>
+  :root {
+    --bg: #0e1116;
+    --panel: #161b22;
+    --border: #2a303a;
+    --text: #d7dee6;
+    --muted: #8b95a1;
+    --accent: #5aa9e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  header {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  main { flex: 1; display: flex; min-height: 0; position: relative; }
+  #canvasWrap { flex: 1; position: relative; }
+  canvas { display: block; }
+  #sidebar {
+    width: 260px;
+    border-left: 1px solid var(--border);
+    padding: 14px;
+    overflow-y: auto;
+    background: var(--panel);
+    font-size: 12px;
+  }
+  #sidebar h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 18px 0 8px; }
+  #sidebar h2:first-child { margin-top: 0; }
+  .legend-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; flex: none; border: 1px solid rgba(255,255,255,0.15); }
+  .drop {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .drop:hover { border-color: var(--accent); color: var(--text); }
+  input[type=file] { display: none; }
+  .stat { display: flex; justify-content: space-between; padding: 2px 0; color: var(--muted); }
+  .stat b { color: var(--text); font-weight: 500; }
+  #hint {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 11px;
+    color: var(--muted);
+    background: rgba(14,17,22,0.7);
+    padding: 6px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+  #empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>AttoFab &mdash; 3D Topography Viewer</h1>
+  <span class="sub" id="dims">No wafer loaded</span>
+</header>
+<main>
+  <div id="canvasWrap">
+    <div id="empty">Drop a Wafer3d JSON export (right panel) to view its topography.<br/>Try <code>output/gds_3d_demo.json</code> from <code>cargo run --example gds_3d_demo -p attofab-core</code>.</div>
+    <div id="hint">Drag to rotate &middot; scroll to zoom &middot; requires internet access to load three.js</div>
+  </div>
+  <div id="sidebar">
+    <div class="drop" id="dropZone">
+      Drop a Wafer3d JSON export here, or click to choose a file<br />
+      <input type="file" id="fileInput" accept=".json,application/json" />
+    </div>
+
+    <h2>Legend</h2>
+    <div id="legend">
+      <div class="legend-row"><span class="swatch" style="background:#4a4e57"></span><span>Silicon</span></div>
+      <div class="legend-row"><span class="swatch" style="background:#7fc8f8"></span><span>SiO&#8322; (oxide)</span></div>
+      <div class="legend-row"><span class="swatch" style="background:#e8b84b"></span><span>Photoresist</span></div>
+      <div class="legend-row"><span class="swatch" style="background:#d4d8dc"></span><span>Metal</span></div>
+    </div>
+
+    <h2>Wafer stats</h2>
+    <div id="stats"><div class="stat"><span>&mdash;</span><span></span></div></div>
+  </div>
+</main>
+
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script>
+// This viewer extrudes the wafer's top-surface heightmap into a 3D mesh
+// (per the architecture doc: "extrude the 2D data to render the final
+// textured microscopic terrain"), rather than rendering every individual
+// voxel - a full per-voxel render of nx*ny*nz cubes is unnecessary for
+// what a topography viewer needs to show (the manufactured surface), and
+// would be far more expensive for large grids. Height comes from
+// Wafer3d::surface_heightmap() semantics: for each (x,y) column, the
+// first non-Void z from the top. Oxidation in this engine currently
+// substitutes material in place (doesn't model volume expansion above
+// the original surface - see docs/math_references.md), so height
+// variation in practice comes from etch steps carving Void regions, not
+// from oxide "growing upward" - the viewer renders whatever the data
+// says, whichever process produced it.
+//
+// No external controls library (e.g. OrbitControls.js) is used, to avoid
+// a second CDN dependency that might not resolve in every environment -
+// rotation/zoom below is hand-rolled with plain pointer events.
+
+const MATERIAL_COLORS = {
+  Silicon: 0x4a4e57,
+  Oxide: 0x7fc8f8,
+  Photoresist: 0xe8b84b,
+  PhotoresistExposed: 0xf2d98a,
+  Metal: 0xd4d8dc,
+  Void: 0x0e1116,
+};
+
+let scene, camera, renderer, mesh;
+let rotX = -0.5, rotY = 0.6, dist = 3.2;
+let dragging = false, lastX = 0, lastY = 0;
+
+function initThree(container) {
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.01, 100);
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio || 1);
+  container.appendChild(renderer.domElement);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 0.65);
+  scene.add(ambient);
+  const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+  dir.position.set(2, 3, 2);
+  scene.add(dir);
+
+  renderer.domElement.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; lastY = e.clientY; });
+  window.addEventListener('pointerup', () => (dragging = false));
+  window.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    rotY += (e.clientX - lastX) * 0.006;
+    rotX = Math.max(-1.4, Math.min(-0.05, rotX + (e.clientY - lastY) * 0.006));
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+  renderer.domElement.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    dist = Math.max(0.6, Math.min(8, dist + e.deltaY * 0.0015));
+  }, { passive: false });
+
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (mesh) {
+    camera.position.set(
+      dist * Math.sin(rotY) * Math.cos(rotX),
+      dist * Math.sin(-rotX),
+      dist * Math.cos(rotY) * Math.cos(rotX)
+    );
+    camera.lookAt(0, 0, 0);
+  }
+  renderer.render(scene, camera);
+}
+
+function buildHeightfield(wafer) {
+  const { nx, ny, nz, material } = wafer;
+  const idx3 = (x, y, z) => z * nx * ny + y * nx + x;
+
+  // Per-column: surface z (first non-Void from top) and its material.
+  const heights = new Float32Array(nx * ny);
+  const mats = new Array(nx * ny);
+  for (let y = 0; y < ny; y++) {
+    for (let x = 0; x < nx; x++) {
+      let h = nz, m = 'Void';
+      for (let z = 0; z < nz; z++) {
+        const mm = material[idx3(x, y, z)];
+        if (mm !== 'Void') { h = z; m = mm; break; }
+      }
+      heights[y * nx + x] = h;
+      mats[y * nx + x] = m;
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  const positions = [];
+  const colors = [];
+  const maxDim = Math.max(nx, ny);
+  const zRange = Math.max(1, nz);
+
+  for (let y = 0; y < ny - 1; y++) {
+    for (let x = 0; x < nx - 1; x++) {
+      const h00 = heights[y * nx + x], h10 = heights[y * nx + x + 1];
+      const h01 = heights[(y + 1) * nx + x], h11 = heights[(y + 1) * nx + x + 1];
+      const m00 = mats[y * nx + x];
+
+      const p = (px, py, h) => [
+        (px / maxDim) - 0.5,
+        0.5 - (h / zRange) * 0.5,
+        (py / maxDim) - 0.5,
+      ];
+      const v00 = p(x, y, h00), v10 = p(x + 1, y, h10), v01 = p(x, y + 1, h01), v11 = p(x + 1, y + 1, h11);
+
+      positions.push(...v00, ...v10, ...v11);
+      positions.push(...v00, ...v11, ...v01);
+
+      const hex = MATERIAL_COLORS[m00] ?? 0xff00ff;
+      const c = new THREE.Color(hex);
+      for (let i = 0; i < 6; i++) colors.push(c.r, c.g, c.b);
+    }
+  }
+
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  geometry.computeVertexNormals();
+
+  const geoMaterial = new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide });
+  return new THREE.Mesh(geometry, geoMaterial);
+}
+
+function loadWafer(wafer) {
+  document.getElementById('empty').style.display = 'none';
+  document.getElementById('dims').textContent =
+    `${wafer.nx} x ${wafer.ny} x ${wafer.nz} voxels  (${(wafer.nx * wafer.dx_um).toFixed(2)} x ${(wafer.ny * wafer.dy_um).toFixed(2)} x ${(wafer.nz * wafer.dz_um).toFixed(2)} um)`;
+
+  if (mesh) scene.remove(mesh);
+  mesh = buildHeightfield(wafer);
+  scene.add(mesh);
+
+  const counts = {};
+  for (const m of wafer.material) counts[m] = (counts[m] || 0) + 1;
+  const stats = document.getElementById('stats');
+  stats.innerHTML = Object.entries(counts)
+    .map(([m, c]) => `<div class="stat"><span>${m}</span><b>${((c / wafer.material.length) * 100).toFixed(1)}%</b></div>`)
+    .join('');
+}
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      loadWafer(JSON.parse(e.target.result));
+    } catch (err) {
+      alert('Failed to parse JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+const container = document.getElementById('canvasWrap');
+initThree(container);
+window.addEventListener('resize', () => {
+  camera.aspect = container.clientWidth / container.clientHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(container.clientWidth, container.clientHeight);
+});
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', (e) => e.target.files[0] && loadFile(e.target.files[0]));
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = '#5aa9e6'; });
+dropZone.addEventListener('dragleave', () => (dropZone.style.borderColor = '#2a303a'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.style.borderColor = '#2a303a';
+  if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+});
+</script>
+</body>
+</html>

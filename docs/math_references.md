@@ -139,3 +139,56 @@ target, but none of this is built yet:
   dedicated `tests/physics_tests/skywater_comparison.rs` should assert
   AttoFab's engine converges on these when run with SkyWater-equivalent
   process parameters.
+
+## Phase 3: GDSII parsing + 3D mesh (implemented)
+
+- **GDSII parser** (`crates/core/src/gds.rs`): hand-rolled, not via an
+  external crate (e.g. gds21) - the GDSII binary stream format is a
+  small, fully deterministic record format, so a direct implementation is
+  both tractable and independently auditable. Extracts BOUNDARY polygons
+  per layer; does not resolve SREF/AREF (cell instancing) or PATH
+  elements. The 8-byte GDSII "real" number format (NOT IEEE 754 - base-16
+  excess-64 exponent) is decoded/encoded and tested against the standard
+  textbook byte-pattern example for 1.0 and -2.0, not just round-trip
+  self-consistency. Polygon rasterization onto a lithography mask uses
+  the standard even-odd point-in-polygon test (ray casting), correct for
+  arbitrary simple polygons, not just axis-aligned rectangles.
+- **Wafer3d** (`crates/core/src/grid3d.rs`): dense 3D voxel mesh, same
+  "start dense, prove correctness" approach as Phase 1/2. Masked (GDSII-
+  mask-driven) oxidation and implant, full 3D Fick's-Law diffusion (6
+  directions, generalized CFL condition
+  `D*dt*(1/dx^2+1/dy^2+1/dz^2) <= 0.5`), and a 3D anisotropic etch.
+  Regression-tested for mass conservation and cubic (x/y/z-symmetric)
+  diffusion spread.
+- **Known simplification**: oxidation substitutes material in place
+  (silicon voxels become oxide voxels at the same z position) rather than
+  modeling the ~1.9x volume expansion that would push the surface
+  upward - so oxide growth alone doesn't currently create height
+  variation for the topography viewer; only etch (which creates real
+  `Void` regions) does. Modeling oxide's volume expansion is a documented
+  future refinement.
+- **Not yet built**: 3D lithography expose/develop (only
+  `spin_photoresist` exists so far - masked etch takes its mask directly
+  as a parameter rather than deriving it from a resist state), a
+  GDS-aware `recipe_runner` (the CLI JSON-recipe interpreter is still
+  2D-only; 3D flows are currently only runnable via a Rust example, see
+  `crates/core/examples/gds_3d_demo.rs`), RLE/chunked-sparse memory
+  optimization (still fully dense - keep demo grids small), and true
+  Level-Set/HRLE topography evolution (the etch is still the same
+  cellular-automaton approach as Phase 2, generalized to 3D, not the
+  Hamilton-Jacobi level-set formulation described in the architecture
+  doc).
+- **3D topography viewer** (`web/topography_3d.html`): Three.js
+  (loaded from a public CDN), heightfield extrusion of
+  `Wafer3d::surface_heightmap()` semantics (not a full per-voxel
+  render - a heightfield is what "extruding the 2D data" in the
+  architecture spec calls for, and is far cheaper to render). Hand-rolled
+  drag-to-rotate/scroll-to-zoom (no OrbitControls.js dependency). NOTE:
+  this file has not been visually verified in a browser in this
+  development environment (no browser/display tooling available here) -
+  it follows standard, carefully-checked Three.js `BufferGeometry`
+  patterns, but treat it as unverified until someone opens it and
+  confirms the render looks right. The computed topology itself (heights,
+  materials, mask correctness) *is* independently verified - both by the
+  Rust test suite and by rendering the same data through a from-scratch
+  isometric canvas projection as a live, verified sanity check.

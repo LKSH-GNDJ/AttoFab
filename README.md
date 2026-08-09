@@ -31,20 +31,18 @@ for the full rationale.
 
 | Phase | Status | What it does |
 |---|---|---|
-| **Phase 1 — 1D engine** |  Done | Single vertical column: Deal-Grove oxidation, Gaussian implant, Fick's-Law diffusion (explicit FDM), junction-depth finding |
-| **Phase 2 — 2D engine** |  Done | Full 2D wafer cross-section: masked (LOCOS-style) oxidation/implant, 2D diffusion, mask expose/develop, cellular-automaton anisotropic & isotropic etch + deposition, canvas renderer |
-| **Phase 3 — GDSII + 3D** |  Planned | GDSII/OASIS mask parsing, RLE + chunked-sparse 3D mesh, WebGL topography viewer |
+| **Phase 1 — 1D engine** | ✅ Done | Single vertical column: Deal-Grove oxidation, Gaussian implant, Fick's-Law diffusion (explicit FDM), junction-depth finding |
+| **Phase 2 — 2D engine** | ✅ Done | Full 2D wafer cross-section: masked (LOCOS-style) oxidation/implant, 2D diffusion, mask expose/develop, cellular-automaton anisotropic & isotropic etch + deposition, canvas renderer |
+| **Phase 3 — GDSII + 3D** | 🟡 Core done, integration partial | GDSII parser (hand-rolled, tested against known byte patterns), dense 3D wafer mesh (masked oxidation/implant, 3D diffusion, 3D anisotropic etch), WebGL heightfield topography viewer. **Not yet done:** 3D lithography expose/develop, a GDS-aware CLI recipe runner (3D flows currently only run via a Rust example), RLE/chunked-sparse memory, true Level-Set/HRLE topography evolution |
 
 Also implemented: crystal-orientation-dependent oxidation ((111) vs (100)),
 a full-stack backend + two frontends + CLI, and a physics regression bench
 that runs on every backend startup.
 
-**Known limitation:** the Pearson-IV implant distribution (for modeling
-ion channeling tails) is present but marked experimental — the ODE
-integration machinery is verified correct, but the moment-matching formula
-isn't yet producing correct output. It's explicitly gated off (Gaussian
-remains the default) with failing tests marked `#[ignore]` rather than
-silently shipped. See `crates/core/src/implant.rs` for the full story.
+**Known limitations, documented honestly rather than hidden:**
+- The Pearson-IV implant distribution (for ion channeling tails) has correct, tested ODE-integration machinery, but its moment-matching formula isn't yet producing correct output — explicitly gated off (Gaussian remains the default), with the two failing tests marked `#[ignore]` and explained rather than silently shipped.
+- `web/topography_3d.html` (the WebGL viewer) hasn't been visually verified in an actual browser in this development environment — the underlying computed topology has been verified independently (Rust tests + a from-scratch canvas render), but the Three.js file itself should be treated as unverified until someone opens it.
+- Oxidation currently substitutes material in place rather than modeling the volume expansion that would push the surface upward — so oxide growth alone doesn't create 3D topography; only etch does.
 
 ## Project structure
 
@@ -61,10 +59,14 @@ open-fab-sim/
 │   │   │   ├── diffusion.rs       Fick's 2nd Law, explicit FDM, 1D
 │   │   │   ├── wafer1d.rs         1D wafer column state (Phase 1)
 │   │   │   ├── grid2d.rs          2D wafer grid state (Phase 2), 2D diffusion
+│   │   │   ├── grid3d.rs          3D wafer mesh state (Phase 3), 3D diffusion + etch
+│   │   │   ├── gds.rs              GDSII binary parser + polygon-to-mask rasterizer
 │   │   │   ├── lithography.rs     Mask expose / develop
-│   │   │   ├── etch.rs            Anisotropic / isotropic etch + deposition
-│   │   │   └── bin/recipe_runner.rs   CLI: JSON recipe in, wafer JSON out
-│   │   └── examples/locos_2d_demo.rs
+│   │   │   ├── etch.rs            Anisotropic / isotropic etch + deposition (2D)
+│   │   │   └── bin/recipe_runner.rs   CLI: JSON recipe in, wafer JSON out (2D only)
+│   │   └── examples/
+│   │       ├── locos_2d_demo.rs
+│   │       └── gds_3d_demo.rs      GDSII-driven 3D LOCOS + contact trench demo
 │   ├── core-wasm/             (stub — wasm-bindgen target, not yet built)
 │   └── core-py/               (stub — PyO3 bindings, not yet built)
 │
@@ -95,6 +97,7 @@ open-fab-sim/
 │       └── styles/globals.css
 │
 ├── web/index.html             Standalone canvas renderer (no backend needed)
+├── web/topography_3d.html     WebGL heightfield viewer for Wafer3d exports (Phase 3)
 ├── data/ · logs/ · reports/ · temp_uploads/    Runtime dirs (auto-created)
 │
 ├── bot.py                     CLI recipe runner (no server required)
@@ -140,6 +143,12 @@ python3 bot.py recipe.json
 # (e.g. from `cargo run --example locos_2d_demo -p attofab-core`)
 ```
 
+**Phase 3 — GDSII-driven 3D (Rust example only, not yet wired into the CLI/backend):**
+```bash
+cargo run --example gds_3d_demo -p attofab-core
+# writes output/gds_3d_demo.json - open web/topography_3d.html and drop it in
+```
+
 ### Example recipe
 
 ```json
@@ -175,6 +184,6 @@ especially welcome.
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE). LKSH-GNDJ, AttoFab is a community-driven educational
+MIT — see [`LICENSE`](LICENSE). AttoFab is a community-driven educational
 project and is not affiliated with or representing any semiconductor
 foundry.
