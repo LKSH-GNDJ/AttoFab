@@ -1,0 +1,8 @@
+[package]
+name = "atto_geom"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+atto_units = { path = "../atto_units" }
