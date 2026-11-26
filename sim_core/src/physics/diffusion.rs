@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Reference diffusion solver for localized silicon regions.
 //!
 //! Governing law: Fick's second law, discretized explicitly in 1D.

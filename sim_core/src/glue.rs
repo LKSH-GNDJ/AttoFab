@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! The seam between the pipeline and the physics.
 //!
 //! **This file compiles** against the application's real source: `tools/check_patches.sh`

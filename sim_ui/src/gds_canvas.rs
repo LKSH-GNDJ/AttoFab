@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! 2D GDS Layout Canvas — top-down vector viewer for a parsed GDSII layout,
 //! with per-layer visibility toggles and smooth zoom/pan state.
 

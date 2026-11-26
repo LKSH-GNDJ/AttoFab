@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage 1: Substrate Preparation — Surface Energy & Wettability Principle.
 //!
 //! Governing law: Young's Equation

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Verification suite for AttoFab's own process operators and FEM.
 //!
 //! *Verification* asks "are we solving the equations right?" It needs no

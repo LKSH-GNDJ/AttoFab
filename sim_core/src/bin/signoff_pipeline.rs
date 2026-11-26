@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! `signoff_pipeline [config.json] [--require-passed]`
 //!
 //! Runs the verification suite, audits the calibration pack, evaluates blind datasets and

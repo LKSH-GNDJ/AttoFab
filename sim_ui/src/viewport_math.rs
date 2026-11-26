@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Camera, picking and wafer-drag math (PRD §1), free of any UI types.
 //!
 //! One [`CameraRig`] is the single source of truth for rendering, picking,

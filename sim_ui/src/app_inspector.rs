@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Right-hand process inspector: active stage, parameters, validation, results,
 //! metrology report, material legend (with visibility + colour configuration),
 //! wafer transform and the inspect readout.

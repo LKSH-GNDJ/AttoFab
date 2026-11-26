@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Renders the real WGSL shader offscreen and checks what it draws.
 //! Skips (passes with a note) when no Vulkan/DX12/Metal adapter exists. CI installs lavapipe.
 

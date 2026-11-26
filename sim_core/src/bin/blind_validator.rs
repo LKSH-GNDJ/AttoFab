@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Command-line runner for AttoFab's blind-validation report framework.
 use sim_core::validation::blind::evaluate_file;
 use std::path::PathBuf;

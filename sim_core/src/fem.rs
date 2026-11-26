@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! 2D plane-strain finite-element stress solver on the SVO cross-section.
 //!
 //! * Bilinear quadrilateral (Q4) elements, 2×2 Gauss integration, rectangular cells.

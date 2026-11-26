@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! The the crates panels, drawn with egui.
 //!
 //! **This file has never been compiled.** `eframe`/`egui` need X11 and Wayland

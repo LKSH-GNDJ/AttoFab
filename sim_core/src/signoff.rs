@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Evidence-based sign-off gate.
 //!
 //! Verification (computed here) and validation (needs measured data) are kept apart:

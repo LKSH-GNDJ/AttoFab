@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Surface-aware process geometry operators (PRD §7 P3).
 //!
 //! Every operator works on a [`ColumnGrid`]: a *local, transient* sampling of

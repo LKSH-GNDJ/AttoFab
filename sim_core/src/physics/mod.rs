@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! The 6 Fabrication Modules — deterministic, closed-form/phenomenological
 //! physics for each stage of the manufacturing pipeline. Each submodule
 //! exposes an `Inputs` struct, an `Outputs` struct, and a `run()` function

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage evaluation (PRD §2, §3, §7 P3).
 //!
 //! [`evaluate_stage`] is the *only* place a fabrication stage is computed. It

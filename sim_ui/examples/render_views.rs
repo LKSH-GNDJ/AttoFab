@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Headless render of the real shader (software Vulkan works): `cargo run --release -p sim_ui --example render_views -- out_dir`
 use eframe::egui::{self, Pos2, RawInput, Rect, Vec2};
 use eframe::egui_wgpu::wgpu;

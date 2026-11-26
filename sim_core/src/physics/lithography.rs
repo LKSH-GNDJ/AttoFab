@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage 3: Lithography — Optics, Particle Scattering & Viscoelasticity Principles.
 //!
 //! Three interchangeable exposure modalities are modeled:

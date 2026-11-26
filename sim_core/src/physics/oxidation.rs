@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Oxidation interface-geometry accounting.
 //!
 //! This module deliberately does not invent oxidation kinetics. Engine.txt

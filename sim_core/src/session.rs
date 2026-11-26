@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Headless editing session: recipe, committed process records, transactional
 //! preview / commit / cancel, undo / redo and the wafer environment transform
 //! (PRD §1, §2, §6, §7 P1–P2).

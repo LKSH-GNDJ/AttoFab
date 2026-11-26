@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! 2D layout-viewer math (no UI types): world (nm, y up) ↔ screen (px, y down), zoom about the cursor,
 //! fit, and polygon culling with a hard cap so a huge layout never stalls a frame.
 

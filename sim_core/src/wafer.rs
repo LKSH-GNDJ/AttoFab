@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Sparse Voxel Octree (SVO) wafer memory state.
 //!
 //! A dense 3D grid of a 300mm wafer at nanometer voxel resolution would

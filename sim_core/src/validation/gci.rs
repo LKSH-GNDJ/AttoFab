@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Grid Convergence Index (GCI) calculations for a scalar quantity of interest.
 //!
 //! Uses the three-grid Richardson extrapolation form commonly associated with

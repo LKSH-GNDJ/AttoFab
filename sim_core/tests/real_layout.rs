@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Runs the loader and the process pipeline on a real, hierarchical, multi-scale layout
 //! (`tests/data/attofab_master_wafer.gds`: 1 nm database unit, 3 cells, 23 AREF + 9 SREF, features from 50 nm to 5 mm).
 

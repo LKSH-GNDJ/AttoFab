@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage 5: Doping — Kinetic Diffusion & Gaussian Distribution Principle.
 //!
 //!   N(x) = Phi / (sqrt(2*pi) * dRp) * exp( -(x - Rp)^2 / (2 * dRp^2) )

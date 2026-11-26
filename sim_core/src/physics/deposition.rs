@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage 2: Thin-Film Deposition — Mechanical Stress & Thermodynamics Principle.
 //!
 //! Governing law: Stoney Equation

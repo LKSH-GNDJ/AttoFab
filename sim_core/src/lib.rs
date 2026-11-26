@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! `sim_core`: AttoFab's platform-agnostic deterministic physics & I/O core.
 //!
 //! This crate has no UI or windowing dependencies, so it compiles identically

@@ -23,7 +23,7 @@ members = [
 version = "0.2.0"
 edition = "2021"
 license = "GPL-3.0-or-later"
-authors = ["Lokesh Gundoju"]
+authors = ["Lokesh Gundoju (LKSH-GNDJ)"]
 
 [workspace.dependencies]
 serde = { version = "1", features = ["derive"] }

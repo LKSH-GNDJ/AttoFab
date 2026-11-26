@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! AttoFab the earlier build application shell (PRD §5 layout).
 //!
 //! Layout: top toolbar · left recipe · centre 3D viewport (+ overlays) · right

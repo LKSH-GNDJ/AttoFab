@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! One material palette for the viewport shader, the egui panels and reports
 //! (PRD §4). Colours are configurable, distinguishable and contrast-checked
 //! against the viewport background in both themes.

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Animation transport state machine (PRD §3).
 //!
 //! Playback position is measured in *segments* (one per stage); each segment

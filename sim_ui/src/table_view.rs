@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Interactive Parameter Table Grid — a spreadsheet-like matrix of numeric
 //! inputs. Editing a cell fires an async recompute event rather than
 //! mutating physics state directly, so the UI thread never blocks on the

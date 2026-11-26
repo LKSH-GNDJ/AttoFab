@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! `sim_ui`: AttoFab's presentation layer.
 //!
 //! This crate is UI-toolkit-facing but toolkit-agnostic at the type level:

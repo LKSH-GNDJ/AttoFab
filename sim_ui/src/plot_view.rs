@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Live Analytical Plotting Pane — instantaneous mathematical curves that
 //! update as table parameters change: Gaussian dopant depth profiles,
 //! Stoney film-stress thresholds, and ellipsometry spectra.

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage 6: Metrology — Wave-Particle Interaction & Ellipsometry Principle.
 //!
 //!   rho = r_p / r_s = tan(Psi) * exp(i * Delta)

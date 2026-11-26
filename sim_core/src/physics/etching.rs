@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage 4: Etching — Directional Anisotropy & Material Selectivity Principles.
 //!
 //!   Anisotropy:  A = 1 - R_lat / R_vert

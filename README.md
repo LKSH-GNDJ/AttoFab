@@ -148,4 +148,19 @@ Open items:
 
 ## License
 
-AttoFab uses GNU GPL-3.0-or-later. Read `LICENSE` before you share the code. A release links about 340 third-party crates from `Cargo.lock`. This repository does not list their licenses. Run `cargo install cargo-license` and then `cargo license` to list them. Read it also before you combine this code with the separate MIT-licensed dense-grid AttoFab code. This build is based on the SVO project. It does not include the dense-grid project.
+Copyright (C) 2026 Lokesh Gundoju (GitHub: LKSH-GNDJ)
+
+AttoFab is free software. You can redistribute it and you can change it under the terms of the GNU General Public License, version 3 or (at your choice) any later version. The file `LICENSE` has the full text.
+
+AttoFab has no warranty. This includes the implied warranty of merchantability and the implied warranty of fitness for a particular purpose. See the GNU General Public License for details.
+
+If you share a changed version, you must:
+
+- Keep this copyright notice and the `LICENSE` file.
+- Say that you changed the code.
+- Give the source code of your version under the same license.
+
+Third-party code:
+
+- A release links about 340 third-party crates from `Cargo.lock`. Each crate has its own license. This repository does not list them. To list them, run `cargo install cargo-license` and then `cargo license`.
+- A separate MIT-licensed dense-grid AttoFab code base exists. This repository does not include it. Read both licenses before you combine the two code bases.

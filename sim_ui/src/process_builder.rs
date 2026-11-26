@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Process Flow Sidebar — sequential recipe view of the six fabrication
 //! stages as a reorderable, toggleable node chain.
 

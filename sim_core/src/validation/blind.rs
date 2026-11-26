@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Blind validation report generation from precomputed predictions and references.
 //!
 //! Input records must be held out from calibration/tuning. This module does not

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Contact sheet of animation keyframes for every stage: `cargo run --release -p sim_ui --example render_frames -- out.png`
 use eframe::egui::{self, Pos2, RawInput, Rect, Vec2};
 use eframe::egui_wgpu::wgpu;

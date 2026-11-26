@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Binary GDSII stream-format parser and 2D polygon boolean cleaning.
 //!
 //! GDSII files are a sequence of fixed-format records: a 2-byte big-endian

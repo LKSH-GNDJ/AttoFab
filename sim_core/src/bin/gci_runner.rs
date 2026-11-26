@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! CLI for three-grid Grid Convergence Index calculations.
 //!
 //! Input JSON shape: {"coarse":{"spacing":4.0,"value":1.16},

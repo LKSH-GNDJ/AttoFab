@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Process-traceability report (PRD "complete process traceability"): the recipe,
 //! every stage's parameters, input/output wafer fingerprints, fidelity,
 //! sub-steps, metrics, warnings and the metrology summary, as Markdown.

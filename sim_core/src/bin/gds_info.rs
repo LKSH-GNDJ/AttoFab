@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! `gds_info file.gds` — what is in this layout? Cells, hierarchy, units, layers, feature sizes.
 use sim_core::io::gds::{parse, summarize};
 

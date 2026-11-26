@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Simulation-scale advisor.
 //!
 //! The octree is built from *cubic* cells, so one cell size serves both lateral features and film

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Translates the SVO wafer state into flat buffers a wgpu compute/fragment
 //! raymarching shader can consume. This module is deliberately GPU-API
 //! agnostic (no `wgpu` dependency in `sim_core`) — it produces plain

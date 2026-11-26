@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! GPU presentation of the wafer: a fullscreen raymarch of the flattened SVO tile
 //! plus an analytic bulk. All camera / palette decisions arrive pre-packed from
 //! [`crate::viewport_math::pack_uniform`] so the CPU and the shader agree.

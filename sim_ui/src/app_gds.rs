@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! GDSII workflow on top of the loader: layout viewer window (click to choose where to simulate),
 //! local feature size, the simulation-scale panel and "auto-scale & use layer".
 

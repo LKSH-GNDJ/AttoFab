@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Inset-viewport render with the CPU overlay (process window + origin) drawn on top: `-- out.png`
 use eframe::egui::{self, Pos2, RawInput, Rect, Vec2};
 use eframe::egui_wgpu::wgpu;

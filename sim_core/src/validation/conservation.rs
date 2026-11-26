@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Stage-level material-volume diagnostics.
 //!
 //! These checks compare geometric volumes only. They are not mass conservation

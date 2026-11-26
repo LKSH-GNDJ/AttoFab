@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Metrology on the committed wafer state (PRD §2 stage 7).
 //!
 //! Every value is *measured from geometry* (column stacks of the SVO) or from

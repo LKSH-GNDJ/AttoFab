@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Per-stage recipe parameters, validation and nominal durations (PRD §2).
 
 use crate::geom::{EtchChemistry, EtchRates, MaskPattern};
