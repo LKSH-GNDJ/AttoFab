@@ -1,0 +1,28 @@
+[package]
+name = "app_android"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "AttoFab native Android platform shell."
+
+[lib]
+# `cdylib` so this builds into the `libapp_android.so` that
+# `android_activity`'s `#[no_mangle] android_main` gets loaded into by the
+# NativeActivity glue; `rlib` keeps it usable as an ordinary Rust
+# dependency for native host-side unit tests of `bootstrap`.
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+sim_core = { path = "../sim_core" }
+sim_ui = { path = "../sim_ui" }
+serde_json.workspace = true
+log.workspace = true
+
+# android_activity (and its NDK bindings) only need to exist for an actual
+# Android build; gating them behind a target-specific table keeps this
+# crate host-checkable like app_web.
+[target.'cfg(target_os = "android")'.dependencies]
+android-activity = "0.5"
+android_logger = "0.13"
+ndk = "0.8"
