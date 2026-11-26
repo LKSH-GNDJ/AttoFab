@@ -1,0 +1,14 @@
+[package]
+name = "atto_process"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+atto_units = { path = "../atto_units" }
+atto_params = { path = "../atto_params" }
+atto_geom = { path = "../atto_geom" }
+atto_dopant = { path = "../atto_dopant" }
+
+[dev-dependencies]
+atto_measure = { path = "../atto_measure" }
