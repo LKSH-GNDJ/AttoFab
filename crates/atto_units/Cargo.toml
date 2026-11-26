@@ -1,0 +1,5 @@
+[package]
+name = "atto_units"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
