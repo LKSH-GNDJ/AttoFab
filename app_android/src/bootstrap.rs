@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Platform-agnostic session bootstrap for the Android shell. Mirrors
 //! `app_web::bootstrap` deliberately: both platform shells wrap the same
 //! `sim_core`/`sim_ui` session state, and keeping the wiring logic free of

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 fn main() -> eframe::Result<()> {
     let (rgba, width, height) = sim_ui::app_icon_rgba();
     let options = eframe::NativeOptions {

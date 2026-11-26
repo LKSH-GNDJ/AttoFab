@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Browser entry point. The same egui application is used by desktop and web.
 
 #[cfg(target_arch = "wasm32")]

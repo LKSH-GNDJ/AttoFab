@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! AttoFab native Android platform shell.
 //!
 //! Built as a `cdylib` (`libapp_android.so`) and loaded by Android's

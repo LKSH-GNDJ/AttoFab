@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Embeds the AttoFab icon (and version info) into the Windows executable so Explorer, the taskbar and
 //! Alt-Tab show it. Never fails the build: without the Windows resource compiler it only prints a warning.
 fn main() {

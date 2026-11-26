@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 Lokesh Gundoju (LKSH-GNDJ)
 //! Platform-agnostic session bootstrap logic shared by the WASM entry
 //! point in `lib.rs`. Kept free of `wasm-bindgen`/`web-sys` so it can be
 //! unit-tested on a native host target instead of requiring a browser or a
