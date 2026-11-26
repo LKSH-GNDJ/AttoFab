@@ -1,0 +1,11 @@
+{
+  "dataset": "SYNTHETIC_DEMO_NOT_EXPERIMENTAL_DATA",
+  "max_relative_error_percent": 5.0,
+  "cases": [
+    {"id": "demo-wafer-01", "reference": 100.0, "predicted": 102.0, "unit": "nm"},
+    {"id": "demo-wafer-02", "reference": 120.0, "predicted": 117.6, "unit": "nm"},
+    {"id": "demo-wafer-03", "reference": 80.0, "predicted": 82.4, "unit": "nm"},
+    {"id": "demo-wafer-04", "reference": 150.0, "predicted": 147.0, "unit": "nm"},
+    {"id": "demo-wafer-05", "reference": 200.0, "predicted": 204.0, "unit": "nm"}
+  ]
+}

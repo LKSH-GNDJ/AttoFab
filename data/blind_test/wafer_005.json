@@ -1,0 +1,12 @@
+{
+  "dataset": "SYNTHETIC_DEMO_NOT_EXPERIMENTAL_DATA_WAFER_005",
+  "max_relative_error_percent": 5.0,
+  "cases": [
+    {
+      "id": "synthetic-005-oxide",
+      "reference": 125.0,
+      "predicted": 127.5,
+      "unit": "nm"
+    }
+  ]
+}

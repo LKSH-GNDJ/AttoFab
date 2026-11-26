@@ -1,0 +1,25 @@
+[package]
+name = "sim_core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "AttoFab deterministic physics & I/O core: SVO wafer state, the 6-stage fabrication pipeline, and GDSII ingestion."
+
+[dependencies]
+atto_bridge = { path = "../crates/atto_bridge" }
+atto_units = { path = "../crates/atto_units" }
+atto_geom = { path = "../crates/atto_geom" }
+atto_process = { path = "../crates/atto_process" }
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+crossbeam.workspace = true
+bytemuck.workspace = true
+
+[features]
+test-fixtures = []
+
+[dev-dependencies]
+approx = "0.5"

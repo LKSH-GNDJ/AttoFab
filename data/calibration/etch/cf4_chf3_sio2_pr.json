@@ -1,0 +1,36 @@
+{
+  "chemistry": "CF4/CHF3",
+  "target_material": "SiO2",
+  "mask_material": "Photoresist",
+  "rates": [
+    {
+      "pressure_mtorr": 10,
+      "rf_power_w": 100,
+      "vert_nm_min": 45,
+      "lat_nm_min": 8
+    },
+    {
+      "pressure_mtorr": 20,
+      "rf_power_w": 200,
+      "vert_nm_min": 100,
+      "lat_nm_min": 12
+    },
+    {
+      "pressure_mtorr": 30,
+      "rf_power_w": 300,
+      "vert_nm_min": 160,
+      "lat_nm_min": 18
+    }
+  ],
+  "selectivity": {
+    "SiO2": 10.0,
+    "Si": 5.0,
+    "Si3N4": 1.0
+  },
+  "anisotropy_factor": 3.5,
+  "passivation_factor": 0.85,
+  "arde": {
+    "critical_aspect_ratio": 8.0,
+    "rate_reduction_factor": 0.4
+  }
+}

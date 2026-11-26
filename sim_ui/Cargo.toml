@@ -1,0 +1,25 @@
+[package]
+name = "sim_ui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "AttoFab native/web UI built on egui and eframe."
+
+[dependencies]
+sim_core = { path = "../sim_core" }
+atto_ui = { path = "../crates/atto_ui" }
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+eframe = { workspace = true, features = ["glow"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+eframe = { workspace = true, features = ["wgpu", "x11"] }
+bytemuck.workspace = true
+image = { version = "0.25", default-features = false, features = ["png"] }
+
+[dev-dependencies]
+sim_core = { path = "../sim_core", features = ["test-fixtures"] }
+pollster = "0.3"
+naga = { version = "0.19", features = ["wgsl-in"] }

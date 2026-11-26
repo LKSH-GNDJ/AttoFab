@@ -1,0 +1,41 @@
+[workspace]
+resolver = "2"
+members = [
+    "app_desktop",
+    "app_web",
+    "crates/atto_bridge",
+    "crates/atto_cli",
+    "crates/atto_device",
+    "crates/atto_dopant",
+    "crates/atto_evidence",
+    "crates/atto_geom",
+    "crates/atto_measure",
+    "crates/atto_params",
+    "crates/atto_process",
+    "crates/atto_study",
+    "crates/atto_ui",
+    "crates/atto_units",
+    "sim_core",
+    "sim_ui",
+]
+
+[workspace.package]
+version = "0.2.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["Lokesh Gundoju"]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "1"
+crossbeam = "0.8"
+log = "0.4"
+eframe = { version = "0.27", default-features = false, features = ["default_fonts"] }
+bytemuck = { version = "1", features = ["derive"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1

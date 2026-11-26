@@ -1,0 +1,16 @@
+{
+  "dry": {
+    "a_um": 0.102,
+    "b_um2_hr": 0.0105,
+    "ea_eV": 2.0,
+    "eb_eV": 1.24,
+    "massoud_xc_nm": 22.0
+  },
+  "wet": {
+    "a_um": 0.52,
+    "b_um2_hr": 0.53,
+    "ea_eV": 1.05,
+    "eb_eV": 0.7,
+    "massoud_xc_nm": 18.0
+  }
+}

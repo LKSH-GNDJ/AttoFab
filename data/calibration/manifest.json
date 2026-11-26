@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "description": "Identity/provenance tracking only. Unverified means source traceability and physical validity are not established. Hashes identify exact bundled bytes, not truth.",
+  "files": [
+    {
+      "path": "data/calibration/etch/cf4_chf3_sio2_pr.json",
+      "sha256": "9023bfcce10aa17abc23e4b71279bda7cd96f158f90d64807403abe79e082855",
+      "evidence_status": "unverified",
+      "source": null,
+      "conditions": null,
+      "uncertainty": null,
+      "license": null,
+      "data_role": "bundled value; traceable provenance not documented; do not treat as experimental validation"
+    },
+    {
+      "path": "data/calibration/implant/B_srim.json",
+      "sha256": "55cfc58d98c7ee3f55f8bb6aaa25f11f61bee71aece7fc1779eb15bf5de2f05c",
+      "evidence_status": "unverified",
+      "source": null,
+      "conditions": null,
+      "uncertainty": null,
+      "license": null,
+      "data_role": "bundled value; traceable provenance not documented; do not treat as experimental validation"
+    },
+    {
+      "path": "data/calibration/oxidation/deal_grove_params.json",
+      "sha256": "af67fa2726ab12e297430a78be897f220127b0dbbd134d2240e4bcb78f596b3b",
+      "evidence_status": "unverified",
+      "source": null,
+      "conditions": null,
+      "uncertainty": null,
+      "license": null,
+      "data_role": "bundled value; traceable provenance not documented; do not treat as experimental validation"
+    },
+    {
+      "path": "data/calibration/oxidation/si100_dry_wet.json",
+      "sha256": "1037eda43742a95048b10ee46ac94494777d3bcab7f2b1e5330f1a2061d9c0e6",
+      "evidence_status": "unverified",
+      "source": null,
+      "conditions": null,
+      "uncertainty": null,
+      "license": null,
+      "data_role": "bundled value; traceable provenance not documented; do not treat as experimental validation"
+    },
+    {
+      "path": "data/calibration/stress/film_properties.json",
+      "sha256": "29b484270c108fd23e5965d2fbbf12267c62db6858a40169f2d8e7b5286312db",
+      "evidence_status": "unverified",
+      "source": null,
+      "conditions": null,
+      "uncertainty": null,
+      "license": null,
+      "data_role": "bundled value; traceable provenance not documented; do not treat as experimental validation"
+    }
+  ]
+}

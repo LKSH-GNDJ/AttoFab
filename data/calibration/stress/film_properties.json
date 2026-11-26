@@ -1,0 +1,46 @@
+{
+  "films": [
+    {
+      "material": "SiO2",
+      "young_gpa": 70.0,
+      "poisson": 0.17,
+      "cte": 0.5,
+      "intrinsic_stress_gpa": -0.2
+    },
+    {
+      "material": "Si3N4",
+      "young_gpa": 280.0,
+      "poisson": 0.27,
+      "cte": 3.0,
+      "intrinsic_stress_gpa": 1.0
+    },
+    {
+      "material": "PolySi",
+      "young_gpa": 160.0,
+      "poisson": 0.22,
+      "cte": 2.6,
+      "intrinsic_stress_gpa": 0.1
+    },
+    {
+      "material": "Al",
+      "young_gpa": 70.0,
+      "poisson": 0.35,
+      "cte": 23.0,
+      "intrinsic_stress_gpa": -0.05
+    },
+    {
+      "material": "Cu",
+      "young_gpa": 130.0,
+      "poisson": 0.34,
+      "cte": 17.0,
+      "intrinsic_stress_gpa": -0.1
+    }
+  ],
+  "substrate": {
+    "material": "Si",
+    "young_gpa": 130.0,
+    "poisson": 0.28,
+    "cte": 2.6,
+    "thickness_um": 775
+  }
+}

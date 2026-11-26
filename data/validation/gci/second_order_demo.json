@@ -1,0 +1,6 @@
+{
+  "coarse": {"spacing": 4.0, "value": 1.16},
+  "medium": {"spacing": 2.0, "value": 1.04},
+  "fine": {"spacing": 1.0, "value": 1.01},
+  "safety_factor": 1.25
+}
