@@ -1,0 +1,8 @@
+{
+  "calibration_dir": "data/calibration",
+  "blind_dir": "data/blind_test",
+  "output_dir": "validation_results/signoff",
+  "gci_min_leaf_sizes": [32.0, 16.0, 8.0],
+  "signoff_criteria": { "max_blind_error_pct": 5.0 },
+  "status_note": "Verification is computed. Validation needs measured data: the bundled blind data is synthetic and the calibration pack is unverified, so the best reachable status today is VERIFIED ONLY."
+}

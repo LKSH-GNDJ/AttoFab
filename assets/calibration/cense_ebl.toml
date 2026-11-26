@@ -1,0 +1,29 @@
+# Empirical calibration profile for CeNSE-style e-beam lithography + RIE
+# tooling. These override the idealized closed-form defaults in
+# `sim_core::physics` to account for tool drift and chamber-specific
+# variation. Loaded by the platform shell into `physics::*Inputs` before a
+# stage job is submitted to the engine.
+
+[meta]
+facility = "CeNSE, IISc (representative profile — not an official CeNSE dataset)"
+tool = "EBL + RIE composite profile"
+last_calibrated = "2026-01-15"
+
+[lithography.ebeam]
+# Empirical forward/backscatter radii measured at this tool's typical
+# operating voltage, superseding the idealized single-scattering estimate.
+voltage_v = 100_000.0
+current_a = 2.0e-9
+forward_scatter_radius_m = 8.0e-9
+backscatter_radius_m = 6.0e-6
+backscatter_eta = 0.34
+
+[etching.rie]
+# Drift-corrected etch rates for a standard SF6/O2 silicon RIE recipe on
+# this chamber, replacing nominal recipe-sheet values.
+r_lateral_nm_per_min = 6.2
+r_vertical_nm_per_min = 47.5
+er_mask_nm_per_min = 2.3
+rf_power_w = 280.0
+pressure_mtorr = 12.0
+chamber_drift_factor = 1.04
