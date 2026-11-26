@@ -1,0 +1,27 @@
+[package]
+name = "atto_cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "attofab"
+path = "src/main.rs"
+
+[dependencies]
+atto_units = { path = "../atto_units" }
+atto_params = { path = "../atto_params" }
+atto_geom = { path = "../atto_geom" }
+atto_dopant = { path = "../atto_dopant" }
+atto_device = { path = "../atto_device" }
+atto_process = { path = "../atto_process" }
+atto_measure = { path = "../atto_measure" }
+atto_bridge = { path = "../atto_bridge" }
+
+[[bin]]
+name = "params_audit"
+path = "src/bin/params_audit.rs"
+
+[[bin]]
+name = "field3d"
+path = "src/bin/field3d.rs"
