@@ -1,3 +1,11 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/attofab_logo_white.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/brand/attofab_logo.svg">
+    <img alt="AttoFab logo" src="assets/brand/attofab_logo.svg" width="420">
+  </picture>
+</p>
+
 # AttoFab
 
 AttoFab is a Rust program. It simulates semiconductor fabrication processes.
@@ -147,6 +155,14 @@ Open items:
 - Many planned features are not built.
 
 ## License
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/attofab_logo_white.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/brand/attofab_logo.svg">
+    <img alt="AttoFab logo" src="assets/brand/attofab_logo.svg" width="260">
+  </picture>
+</p>
 
 Copyright (C) 2026 Lokesh Gundoju (GitHub: LKSH-GNDJ)
 
